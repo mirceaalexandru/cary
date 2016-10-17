@@ -10,8 +10,10 @@ const ClientRoutes = require('./server/api/index');
 
 const Plugins = require('./plugins');
 
-var Server = new Hapi.Server();
-var port = Config.get('web').port;
+var Server = new Hapi.Server({
+	app: Config
+});
+var port = Config.web.port;
 
 Server.connection({port: port});
 Server.log(['error', 'database', 'read']);
@@ -19,7 +21,7 @@ Server.log(['error', 'database', 'read']);
 Server.register(Plugins.plugins, (err) => {
 	endIfErr(err);
 
-	Server.bind({config: Config});
+//	Server.bind({config: Config});
 	Server.realm.settings.files.relativeTo = relativePath;
 
 	const cache = Server.cache({segment: 'sessions', expiresIn: 3 * 24 * 60 * 60 * 1000});
@@ -57,8 +59,7 @@ Server.register(Plugins.plugins, (err) => {
 
 	Server.route(ClientRoutes);
 
-	Server.app.logger.info('Config', Config);
-	Server.app.logger.info('Hapi', Server.info);
+	Server.app.logger.info(`Using config: ${JSON.stringify(Config, null, 2)}`);
 	Server.start(endIfErr);
 	Server.app.logger.info(`Server started at ${port}`);
 });

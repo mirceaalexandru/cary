@@ -14,10 +14,10 @@ var plugins = [
 		register: require('hapi-pino')
 	},
 	{
-		register: require('./server/lib/db')
+		register: require('server-frame-auth')
 	},
 	{
-		register: require('server-auth')
+		register: require('server-frame-mongo')
 	},
 	{
 		register: require('lout'), options: {apiVersion: require('./package.json').version}
