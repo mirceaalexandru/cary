@@ -35,6 +35,8 @@
     "nodemailer-markdown": "1.x.x",
     "object-assign": "4.x.x",
     "server-frame-auth": "^0.x.x",
+    "server-frame-utils": "^0.x.x",
+    "server-frame-mongo": "^0.x.x",
     "slug": "0.9.x",
     "vision": "4.x.x",
     "visionary": "6.x.x"

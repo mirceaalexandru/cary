@@ -20,6 +20,9 @@ var plugins = [
 		register: require('server-frame-mongo')
 	},
 	{
+		register: require('server-frame-utils')
+	},
+	{
 		register: require('lout'), options: {apiVersion: require('./package.json').version}
 	},
 	{

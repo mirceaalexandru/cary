@@ -11,7 +11,8 @@ const config = {
 		url: process.env.DB_URL
 	},
 	web: {
-		port: process.env.WEB_PORT || 9090
+		port: process.env.WEB_PORT || 9090,
+		url: process.env.WEB_URL || "http://localhost:9090"
 	},
 	cookieSecret: process.env.COOKIE_SECRET,
 	mail: {
@@ -21,6 +22,8 @@ const config = {
 	}
 };
 
+
+// validate configuration and prevent app to start if not fully-configured.
 Joi.validate(
 	config,
 	Joi.object().keys({
@@ -29,6 +32,7 @@ Joi.validate(
 			url: Joi.string().min(3).required()
 		}).required(),
 		web: Joi.object().keys({
+			url: Joi.string().min(3).required(),
 			port: Joi.number().integer()
 		}).required(),
 		cookieSecret: Joi.string().required(),
@@ -37,7 +41,6 @@ Joi.validate(
 			fromAddress: Joi.string().required(),
 			templateFolder: Joi.string().required()
 		}).required()
-
 	}), (err) => {
 		if (err) {
 			console.log(err);
