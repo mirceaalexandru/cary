@@ -22,7 +22,6 @@ const config = {
 	}
 };
 
-
 // validate configuration and prevent app to start if not fully-configured.
 Joi.validate(
 	config,
