@@ -19,6 +19,15 @@ const config = {
 		settings: process.env.EMAIL_SETTINGS ? JSON.parse(process.env.EMAIL_SETTINGS) : {},
 		fromAddress: process.env.EMAIL_FROM,
 		templateFolder: process.env.EMAIL_TEMPLATE_FOLDER
+	},
+	aws: {
+		settings: {
+			region: process.env.AWS_REGION,
+			accessKeyId: process.env.AWS_KEY,
+			secretAccessKey: process.env.AWS_SECRET,
+		},
+		jobSNS: process.env.SNS_JOB_TOPIC,
+		alertSNS: process.env.SNS_ALERT_TOPIC
 	}
 };
 
@@ -39,6 +48,15 @@ Joi.validate(
 			settings: Joi.object().required(),
 			fromAddress: Joi.string().required(),
 			templateFolder: Joi.string().required()
+		}).required(),
+		aws: Joi.object().keys({
+			settings: Joi.object().keys({
+				region: Joi.string().required(),
+				accessKeyId: Joi.string().required(),
+				secretAccessKey: Joi.string().required()
+			}).required(),
+			jobSNS: Joi.string().required(),
+			alertSNS: Joi.string().required()
 		}).required()
 	}), (err) => {
 		if (err) {
