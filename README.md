@@ -7,8 +7,8 @@
 
 ## Plugins
 
- * [server-frame-auth](https://github.com/mirceaalexandru/server-frame-auth)
- * [server-frame-mongo](https://github.com/mirceaalexandru/server-frame-mongo)
- * [server-frame-utils](https://github.com/mirceaalexandru/server-frame-utils)
- * [server-frame-lambda](https://github.com/mirceaalexandru/server-frame-lambda)
+ * [server-frame-auth](https://github.com/mirceaalexandru/server-frame-auth) - Authentication plugin
+ * [server-frame-mongo](https://github.com/mirceaalexandru/server-frame-mongo) - Mongo DB plugin
+ * [server-frame-utils](https://github.com/mirceaalexandru/server-frame-utils) - Utility plugin
+ * [server-frame-lambda](https://github.com/mirceaalexandru/server-frame-lambda) - Lambda functions to be used by this project
  
