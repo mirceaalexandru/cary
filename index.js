@@ -32,9 +32,6 @@ Server.register(
 
 		Server.realm.settings.files.relativeTo = relativePath;
 
-		const cache = Server.cache({segment: 'sessions', expiresIn: 3 * 24 * 60 * 60 * 1000});
-		Server.app.cache = cache;
-
 		Server.route(ClientRoutes);
 
 		Server.app.logger.info(`Using config: ${JSON.stringify(Config, null, 2)}`);
