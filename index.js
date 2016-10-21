@@ -30,9 +30,6 @@ Server.register(
 		},
 		{
 			register: require('server-frame-mongo')
-		},
-		{
-			register: require('server-frame-dummy-service')
 		}
 	], (err) => {
 		endIfErr(err);
