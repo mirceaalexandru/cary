@@ -12,6 +12,7 @@ const config = {
 	},
 	web: {
 		port: process.env.WEB_PORT || 9090,
+		internalPort: process.env.WEB_INTERNAL_PORT,
 		url: process.env.WEB_URL || "http://localhost:9090"
 	},
 	cookieSecret: process.env.COOKIE_SECRET,
@@ -41,7 +42,8 @@ Joi.validate(
 		}).required(),
 		web: Joi.object().keys({
 			url: Joi.string().min(3).required(),
-			port: Joi.number().integer()
+			port: Joi.number().integer().required(),
+			internalPort: Joi.number().integer()
 		}).required(),
 		cookieSecret: Joi.string().required(),
 		mail: Joi.object().keys({

@@ -6,6 +6,7 @@ const relativePath = Path.join(__dirname, 'public/');
 
 // Our hapi server
 const Hapi = require('hapi');
+const Nes = require('nes');
 const ClientRoutes = require('./server/api/index');
 
 var Server = new Hapi.Server({
@@ -13,11 +14,17 @@ var Server = new Hapi.Server({
 });
 var port = Config.web.port;
 
-Server.connection({port: port});
+Server.connection({port: port, labels: 'default'});
+Server.connection({port: Config.web.internalPort, labels: 'internal'});
+
+
 Server.log(['error', 'database', 'read']);
 
 Server.register(
 	[
+		{
+			register: Nes
+		},
 		{
 			register: require('./plugins')
 		},
