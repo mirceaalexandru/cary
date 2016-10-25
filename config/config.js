@@ -3,7 +3,11 @@
 const Joi = require('joi');
 const Dotenv = require('dotenv');
 
-Dotenv.config({silent: true});
+try {
+	Dotenv.config({silent: true});
+}catch (err) {
+	// this is ignored, as in production we will not use dotenv
+}
 
 const config = {
 	projectName: process.env.PROJECT_NAME || 'Server',
