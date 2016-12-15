@@ -36,6 +36,8 @@ const config = {
 	}
 };
 
+console.log("Using config: ", JSON.stringify(config, null, 2))
+
 // validate configuration and prevent app to start if not fully-configured.
 Joi.validate(
 	config,
