@@ -14,7 +14,14 @@ var Server = new Hapi.Server({
 });
 var port = Config.web.port;
 
-Server.connection({port: port, labels: 'default'});
+Server.connection({
+	port: port,
+	labels: 'default',
+	routes: {
+		cors: true
+	}
+});
+
 Server.connection({port: Config.web.internalPort, labels: 'internal'});
 
 
