@@ -27,7 +27,7 @@ const config = {
 	},
 	aws: {
 		settings: {
-			region: process.env.AWS_REGION,
+			region: process.env.AWS_REGION || 'eu-central-1',
 			accessKeyId: process.env.AWS_KEY,
 			secretAccessKey: process.env.AWS_SECRET,
 		},
@@ -69,7 +69,7 @@ Joi.validate(
 	}), (err) => {
 		if (err) {
 			console.log(err);
-			process.exit(1);
+//			process.exit(1);
 		}
 	})
 
