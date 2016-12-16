@@ -15,10 +15,10 @@ exports.register = function (server, options, next) {
 			register: require('hapi-pino')
 		},
 		{
-			register: require('server-frame-auth')
+			register: require('cary-auth')
 		},
 		{
-			register: require('server-frame-utils')
+			register: require('cary-utils')
 		},
 		{
 			register: require('lout'), options: {apiVersion: require('./package.json').version}
