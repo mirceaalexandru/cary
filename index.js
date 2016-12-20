@@ -24,7 +24,6 @@ Server.connection({
 
 Server.connection({port: Config.web.internalPort, labels: 'internal'});
 
-
 Server.log(['error', 'database', 'read']);
 
 Server.register(
@@ -43,7 +42,7 @@ Server.register(
 
 		Server.realm.settings.files.relativeTo = relativePath;
 
-		Server.route(ClientRoutes);
+//		Server.route(ClientRoutes);
 
 		Server.app.logger.info(`Using config: ${JSON.stringify(Config, null, 2)}`);
 		Server.start(endIfErr);
